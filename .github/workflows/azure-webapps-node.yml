@@ -1,0 +1,26 @@
+async function main() {
+
+    // query ETH balances on Arbitrum, Base and Optimism
+
+    const chains = [42161, 8453, 10]
+
+    for (const chain of chains) {
+
+        // endpoint accepts one chain at a time, loop for all your chains
+   
+        const query = await fetch(`https://api.etherscan.io/v2/api
+           ?chainid=${chain}
+           &module=5FPr1ZF6Sq3FD82KbsSCJbF5ma0QCuR6z7nXCm8rDunNB3MxRVjPv
+           &action=balance
+           &address=0xb5d85cbf7cb3ee0d56b3bb207d5fc4b82f43f511
+           &tag=latest&apikey=wfWtT9gDUSL9zg0zBgr7kPskLdF7eGSJaaYG3Pe276WWk9KJAJcpdlhsP3NKsGwn
+           
+        const response = await query.json()
+
+        const balance = response.result
+        console.log(balance)
+
+    }
+}
+
+main()
